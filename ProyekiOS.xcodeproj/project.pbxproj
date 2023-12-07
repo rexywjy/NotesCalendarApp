@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2912EF422B1636A400D7F4ED /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912EF412B1636A400D7F4ED /* ViewController2.swift */; };
 		2912EF462B163F6F00D7F4ED /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912EF452B163F6F00D7F4ED /* CollectionViewCell.swift */; };
+		2982F0E32B21BBF700EBC049 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982F0E22B21BBF700EBC049 /* ViewController3.swift */; };
 		9381C1D2212AE0DF14336F49 /* Pods_ProyekiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651C7E5FD7E45AD8E8B929CB /* Pods_ProyekiOS.framework */; };
 		E886F97E2B1079A0001F7A32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886F97D2B1079A0001F7A32 /* AppDelegate.swift */; };
 		E886F9802B1079A0001F7A32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886F97F2B1079A0001F7A32 /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		2912EF412B1636A400D7F4ED /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		2912EF452B163F6F00D7F4ED /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		2982F0E22B21BBF700EBC049 /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		5835702400A436F7F8534EEB /* Pods-ProyekiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProyekiOS.debug.xcconfig"; path = "Target Support Files/Pods-ProyekiOS/Pods-ProyekiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		651C7E5FD7E45AD8E8B929CB /* Pods_ProyekiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProyekiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A6097CE2D60D2B8F644310 /* Pods-ProyekiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProyekiOS.release.xcconfig"; path = "Target Support Files/Pods-ProyekiOS/Pods-ProyekiOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				E886F97D2B1079A0001F7A32 /* AppDelegate.swift */,
 				E886F97F2B1079A0001F7A32 /* SceneDelegate.swift */,
 				E886F9812B1079A0001F7A32 /* ViewController.swift */,
+				2982F0E22B21BBF700EBC049 /* ViewController3.swift */,
 				2912EF412B1636A400D7F4ED /* ViewController2.swift */,
 				E886F9832B1079A0001F7A32 /* Main.storyboard */,
 				2912EF452B163F6F00D7F4ED /* CollectionViewCell.swift */,
@@ -218,6 +221,7 @@
 			files = (
 				2912EF462B163F6F00D7F4ED /* CollectionViewCell.swift in Sources */,
 				E886F9822B1079A0001F7A32 /* ViewController.swift in Sources */,
+				2982F0E32B21BBF700EBC049 /* ViewController3.swift in Sources */,
 				2912EF422B1636A400D7F4ED /* ViewController2.swift in Sources */,
 				E886F97E2B1079A0001F7A32 /* AppDelegate.swift in Sources */,
 				E886F9802B1079A0001F7A32 /* SceneDelegate.swift in Sources */,

@@ -16,8 +16,10 @@ class ViewController: UIViewController, KembaliDelegate2, UICollectionViewDelega
     var keberapa: Int = -1
        
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var nama: UITextField!
-   @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var addBtn: UIButton!
+    @IBAction func addBtn(_ sender: UIButton) {
+        performSegue(withIdentifier: "draw", sender: self)
+    }
     var colors: [UIColor] = [.systemIndigo, .systemGreen, .systemBlue, .systemTeal,
                              .systemOrange, .systemPurple,
                              .systemYellow, .systemPink]
@@ -80,21 +82,24 @@ class ViewController: UIViewController, KembaliDelegate2, UICollectionViewDelega
        collectionView?.delegate = self
        collectionView?.dataSource = self
        
+       addBtn.setImage(
+           UIImage(systemName: "paintbrush.pointed.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large))
+                       , for: .normal
+       )
+       addBtn.tintColor = UIColor.label
+       
        ref.child("notes").observe(.value, with: { (snapshot) in
-           let v = snapshot.value as! NSDictionary
-           for (_,j) in v {
-               for (m,n) in j as! NSDictionary {
-                   if (m as! String == "nama") {
-                       self.judulNotes.append(n as! String)
-                   } else if (m as! String == "content") {
-                       self.contentNotes.append(n as! String)
-                   } else if (m as! String == "date") {
-                       self.tanggalNotes.append(n as! String)
-                   }
+           for child in snapshot.children {
+               let child = child as! DataSnapshot
+               if let childVal = child.value as? [String: AnyObject] {
+                   self.judulNotes.append(childVal["nama"] as! String)
+                   self.contentNotes.append(childVal["content"] as! String)
+                   self.tanggalNotes.append(childVal["date"] as! String)
+                   
                }
                self.collectionView.reloadData()
            }
-         }) { (error) in
+       }){ (error) in
            print(error.localizedDescription)
        }
        
@@ -128,9 +133,18 @@ class ViewController: UIViewController, KembaliDelegate2, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
-        cell.backgroundColor = colors[Int.random(in: 0..<colors.count)]
+        //cell.backgroundColor = colors[Int.random(in: 0..<colors.count)]
         cell.judul.text = judulNotes[indexPath.row]
         cell.tanggal.text = tanggalNotes[indexPath.row]
+        cell.viewnya.layer.borderWidth = 2 // design main card
+        cell.viewnya.layer.borderColor = UIColor.black.cgColor
+        cell.viewnya.layer.shadowColor = UIColor.black.cgColor
+        cell.viewnya.layer.shadowOffset = CGSize(width: 7.0, height: 7.0)
+        cell.viewnya.layer.shadowOpacity = 1.0
+        cell.viewnya.layer.shadowRadius = 0.0
+        cell.viewnya.layer.masksToBounds = false
+        cell.viewnya.layer.cornerRadius = 12.0
+        cell.viewnya.backgroundColor = colors[Int.random(in: 0..<colors.count)]
         
         
         return cell
