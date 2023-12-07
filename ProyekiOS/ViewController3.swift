@@ -10,7 +10,6 @@ import PencilKit
 import PhotosUI
 
 class ViewController3: UIViewController, PKCanvasViewDelegate {
-    
     var finger = UIBarButtonItem(title: "Finger", style: .plain, target: self, action: #selector(fingerTap))
     var save = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveTap))
     
