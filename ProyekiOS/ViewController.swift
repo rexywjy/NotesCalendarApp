@@ -98,7 +98,6 @@ class ViewController: UIViewController, KembaliDelegate2, UICollectionViewDelega
            print(error.localizedDescription)
        }
        
-       
        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:)))
        collectionView?.addGestureRecognizer(gesture)
        
