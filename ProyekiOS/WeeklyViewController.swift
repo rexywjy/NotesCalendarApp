@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 var selectedDate = Date()
 
@@ -9,16 +10,52 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var collectionView: UICollectionView!
 	
-
+    var selectedDateEvents: [Event] = []
+    var ref: DatabaseReference!
+    
 	var totalSquares = [Date]()
 	
 	
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
+        ref = Database.database(url: "https://projekios-6af0f-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
+        
 		setCellsView()
 		setWeekView()
+        fetchEvents()
 	}
+    
+    func fetchEvents() {
+        ref.child("events").observe(.value) { (snapshot) in
+            // Clear existing events
+            self.selectedDateEvents.removeAll()
+
+            // Iterate through the snapshot to get events
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot,
+                   let eventDict = childSnapshot.value as? [String: Any],
+                   let eventName = eventDict["name"] as? String,
+                   let timestamp = eventDict["date"] as? TimeInterval {
+
+                    let event = Event()
+                    event.name = eventName
+                    event.date = Date(timeIntervalSince1970: timestamp)
+
+                    if Calendar.current.isDate(event.date, inSameDayAs: selectedDate) {
+                        self.selectedDateEvents.append(event)
+                    }
+                }
+            }
+
+            // Refresh UI or update your data source as needed
+            // For example, if you have a table view to display events:
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+
 	
 	func setCellsView()
 	{
@@ -73,9 +110,11 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
 	{
-		selectedDate = totalSquares[indexPath.item]
-		collectionView.reloadData()
-		tableView.reloadData()
+        selectedDate = totalSquares[indexPath.item]
+        setWeekView()
+        fetchEvents() // Fetch events for the newly selected date
+        collectionView.reloadData()
+        tableView.reloadData()
 	}
 	
 	@IBAction func previousWeek(_ sender: Any)
@@ -99,15 +138,23 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
-		return Event().eventsForDate(date: selectedDate).count
+		return selectedDateEvents.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
 	{
-		let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as! EventCell
-		let event = Event().eventsForDate(date: selectedDate)[indexPath.row]
-		cell.eventLabel.text = event.name + " " + CalendarHelper().timeString(date: event.date)
-		return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! EventCell
+           
+           // Check if the index is within the bounds of the array
+           if indexPath.row < selectedDateEvents.count {
+               let event = selectedDateEvents[indexPath.row]
+               cell.eventLabel.text = event.name + " " + CalendarHelper().timeString(date: event.date)
+           } else {
+               // Handle the case where the index is out of bounds
+               cell.eventLabel.text = "Invalid Index"
+           }
+
+        return cell
 	}
 	
 	override func viewDidAppear(_ animated: Bool)

@@ -1,19 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GJi-QW-BbT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RJv-bM-CEG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Notes-->
+        <scene sceneID="6Ha-7N-GGJ">
+            <objects>
+                <viewController id="3Xl-pi-gDT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Jk-Fv-gsd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="AaF-Y1-RJr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Notes" image="note.text" catalog="system" id="FjE-PJ-laK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RKV-nE-Xtq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1235" y="-1272"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="0I6-GN-SS4">
+            <objects>
+                <tabBarController id="RJv-bM-CEG" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" itemPositioning="centered" id="tgj-6A-7rV">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="AccentColor"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="3Xl-pi-gDT" kind="relationship" relationship="viewControllers" id="8tp-FB-gwg"/>
+                        <segue destination="GJi-QW-BbT" kind="relationship" relationship="viewControllers" id="FrT-ye-QYt"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rQd-od-PAk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2701" y="-628"/>
+        </scene>
+        <!--Calendar-->
         <scene sceneID="J69-pm-9VP">
             <objects>
                 <navigationController id="GJi-QW-BbT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calendar" id="OGN-P9-c1J">
+                        <imageReference key="image" image="calendar" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DG7-11-y01">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -24,7 +66,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l93-OL-bxc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-823" y="94"/>
+            <point key="canvasLocation" x="-1236" y="76"/>
         </scene>
         <!--Monthly Calendar-->
         <scene sceneID="tne-QT-ifu">
@@ -105,7 +147,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xxl-GX-PPb">
-                                <rect key="frame" x="0.0" y="227.5" width="414" height="634.5"/>
+                                <rect key="frame" x="0.0" y="227.5" width="414" height="585.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="iBe-yb-cbf">
                                     <size key="itemSize" width="128" height="128"/>
@@ -168,7 +210,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Monthly Calendar" id="ntj-gU-PmD">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="eyv-j6-fJK">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="eyv-j6-fJK">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="kqC-GW-BCQ">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -267,7 +309,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="F10-Jf-RuJ">
-                                <rect key="frame" x="0.0" y="227.5" width="414" height="90.5"/>
+                                <rect key="frame" x="0.0" y="227.5" width="414" height="83.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="3jN-pE-20W">
                                     <size key="itemSize" width="128" height="128"/>
@@ -306,7 +348,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eYY-YW-y4j">
-                                <rect key="frame" x="0.0" y="318" width="414" height="544"/>
+                                <rect key="frame" x="0.0" y="311" width="414" height="502"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" rowHeight="67" id="qDn-A4-hW8" customClass="EventCell" customModule="ProyekiOS" customModuleProvider="target">
@@ -367,7 +409,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Weekly Calendar" id="TL4-y0-sT6">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="x4F-Sp-ul6">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="x4F-Sp-ul6">
                             <connections>
                                 <segue destination="1w4-iF-aWX" kind="show" id="6vH-R7-7ir"/>
                             </connections>
@@ -415,7 +457,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Event Edit" id="Mdo-PN-W0g">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="cQK-TI-nkk">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="cQK-TI-nkk">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="iCv-eH-cqY">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -439,6 +481,11 @@
     <resources>
         <image name="arrowshape.turn.up.left.circle.fill" catalog="system" width="128" height="123"/>
         <image name="arrowshape.turn.up.right.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="calendar" catalog="system" width="128" height="107"/>
+        <image name="note.text" catalog="system" width="128" height="107"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
