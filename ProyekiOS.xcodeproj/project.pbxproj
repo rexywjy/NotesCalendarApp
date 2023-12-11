@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		9381C1D2212AE0DF14336F49 /* Pods_ProyekiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651C7E5FD7E45AD8E8B929CB /* Pods_ProyekiOS.framework */; };
 		E81F19FD2B1EA9A1003ACB6C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81F19FC2B1EA9A1003ACB6C /* EventCell.swift */; };
+		E83541292B26AD32003657B4 /* MonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83541282B26AD32003657B4 /* MonthlyViewController.swift */; };
 		E886F97E2B1079A0001F7A32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886F97D2B1079A0001F7A32 /* AppDelegate.swift */; };
 		E886F9802B1079A0001F7A32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886F97F2B1079A0001F7A32 /* SceneDelegate.swift */; };
-		E886F9822B1079A0001F7A32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886F9812B1079A0001F7A32 /* ViewController.swift */; };
 		E886F9852B1079A0001F7A32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E886F9832B1079A0001F7A32 /* Main.storyboard */; };
 		E886F9872B1079A2001F7A32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E886F9862B1079A2001F7A32 /* Assets.xcassets */; };
 		E886F98A2B1079A2001F7A32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E886F9882B1079A2001F7A32 /* LaunchScreen.storyboard */; };
@@ -28,10 +28,10 @@
 		651C7E5FD7E45AD8E8B929CB /* Pods_ProyekiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProyekiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A6097CE2D60D2B8F644310 /* Pods-ProyekiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProyekiOS.release.xcconfig"; path = "Target Support Files/Pods-ProyekiOS/Pods-ProyekiOS.release.xcconfig"; sourceTree = "<group>"; };
 		E81F19FC2B1EA9A1003ACB6C /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		E83541282B26AD32003657B4 /* MonthlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyViewController.swift; sourceTree = "<group>"; };
 		E886F97A2B1079A0001F7A32 /* ProyekiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProyekiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E886F97D2B1079A0001F7A32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E886F97F2B1079A0001F7A32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E886F9812B1079A0001F7A32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E886F9842B1079A0001F7A32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E886F9862B1079A2001F7A32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E886F9892B1079A2001F7A32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,8 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				E886F97D2B1079A0001F7A32 /* AppDelegate.swift */,
+				E83541282B26AD32003657B4 /* MonthlyViewController.swift */,
 				E886F97F2B1079A0001F7A32 /* SceneDelegate.swift */,
-				E886F9812B1079A0001F7A32 /* ViewController.swift */,
 				E8A20C972B1EA7D900E7F528 /* WeeklyViewController.swift */,
 				E81F19FC2B1EA9A1003ACB6C /* EventCell.swift */,
 				E8A20C992B1EA82800E7F528 /* EventEditViewController.swift */,
@@ -228,7 +228,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E886F9822B1079A0001F7A32 /* ViewController.swift in Sources */,
 				E81F19FD2B1EA9A1003ACB6C /* EventCell.swift in Sources */,
 				E8A20C9A2B1EA82800E7F528 /* EventEditViewController.swift in Sources */,
 				E8A20C962B1EA77900E7F528 /* CalendarHelper.swift in Sources */,
@@ -236,6 +235,7 @@
 				E8A20C982B1EA7DA00E7F528 /* WeeklyViewController.swift in Sources */,
 				E8A20C9C2B1EA84900E7F528 /* Event.swift in Sources */,
 				E886F9802B1079A0001F7A32 /* SceneDelegate.swift in Sources */,
+				E83541292B26AD32003657B4 /* MonthlyViewController.swift in Sources */,
 				E8A20CA02B1EA88700E7F528 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

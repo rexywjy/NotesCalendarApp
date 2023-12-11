@@ -15,7 +15,6 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
     
 	var totalSquares = [Date]()
 	
-	
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
@@ -28,10 +27,8 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func fetchEvents() {
         ref.child("events").observe(.value) { (snapshot) in
-            // Clear existing events
             self.selectedDateEvents.removeAll()
 
-            // Iterate through the snapshot to get events
             for child in snapshot.children {
                 if let childSnapshot = child as? DataSnapshot,
                    let eventDict = childSnapshot.value as? [String: Any],
@@ -47,9 +44,6 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
                     }
                 }
             }
-
-            // Refresh UI or update your data source as needed
-            // For example, if you have a table view to display events:
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -134,8 +128,6 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
 		return false
 	}
 	
-	
-	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
 		return selectedDateEvents.count
@@ -144,13 +136,10 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
 	{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! EventCell
-           
-           // Check if the index is within the bounds of the array
            if indexPath.row < selectedDateEvents.count {
                let event = selectedDateEvents[indexPath.row]
                cell.eventLabel.text = event.name + " " + CalendarHelper().timeString(date: event.date)
            } else {
-               // Handle the case where the index is out of bounds
                cell.eventLabel.text = "Invalid Index"
            }
 

@@ -17,10 +17,9 @@ class EventEditViewController: UIViewController {
     @IBAction func saveAction(_ sender: Any) {
         guard let eventName = nameTF.text else { return }
 
-        // Firebase Realtime Database
         let eventDict: [String: Any] = [
             "name": eventName,
-            "date": datePicker.date.timeIntervalSince1970 // Store date as a timestamp
+            "date": datePicker.date.timeIntervalSince1970
         ]
 
         let newEventRef = ref.child("events").childByAutoId()
