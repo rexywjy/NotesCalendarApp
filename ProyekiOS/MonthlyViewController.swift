@@ -13,10 +13,8 @@ class MonthlyViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-
     
     var totalSquares = [String]()
-    
     
     override func viewDidLoad()
     {
