@@ -10,8 +10,8 @@ import PencilKit
 import PhotosUI
 
 class ViewController3: UIViewController, PKCanvasViewDelegate {
-    var finger = UIBarButtonItem(title: "Finger", style: .plain, target: self, action: #selector(fingerTap))
-    var save = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveTap))
+    var finger = UIBarButtonItem(title: "Finger", style: .plain, target: ViewController3.self, action: #selector(fingerTap))
+    var save = UIBarButtonItem(title: "Save", style: .plain, target: ViewController3.self, action: #selector(saveTap))
     
     let canvasWidth: CGFloat = UIScreen.main.bounds.width
     let canvasOverscrollHeight: CGFloat = UIScreen.main.bounds.height
