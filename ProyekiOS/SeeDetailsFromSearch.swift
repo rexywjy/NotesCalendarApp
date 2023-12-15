@@ -8,17 +8,24 @@
 import UIKit
 
 protocol KembaliDelegatee{
+    func deleteNoteRex(title: String, tipenya: String)
 }
 
 class SeeDetailsFromSearch: UIViewController {
     var delegasi: KembaliDelegatee?
     
-    var typee = ""
-    var datee = ""
-    var titlee = ""
-    var contentt = ""
+    var typee : String?
+    var datee : String?
+    var titlee : String?
+    var contentt : String?
     
-    @IBOutlet weak var tipe: UILabel!
+    @IBAction func editBtn(_ sender: UIBarButtonItem) {
+    }
+    @IBAction func deleteBtn(_ sender: UIBarButtonItem) {
+        print("deletebutton pressed")
+        delegasi?.deleteNoteRex(title: titlee ?? "", tipenya: typee ?? "")
+        navigationController?.popViewController(animated: true) //back
+    }
     @IBOutlet weak var tanggal: UILabel!
     @IBOutlet weak var judul: UILabel!
     
@@ -26,7 +33,12 @@ class SeeDetailsFromSearch: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tanggal.text = datee ?? "dd/mm/yyy"
+        judul.text = titlee ?? "nill"
+        konten.text = contentt ?? "no content"
         // Do any additional setup after loading the view.
+//        self.navigationController?.b
+        title = self.typee?.uppercased()
     }
     
 

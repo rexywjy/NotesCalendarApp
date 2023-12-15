@@ -10,6 +10,53 @@ import Firebase
 import Foundation
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, KembaliDelegatee {
+    func deleteNoteRex(title: String, tipenya: String) {
+        if(tipenya == "notes"){
+            ref.child("notes").queryOrdered(byChild: "nama").queryEqual(toValue: title).observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let dictionary = snapshot.value as? [String:Any] else {return}
+                dictionary.forEach({ (key , _) in
+                    self.ref.child("notes/\(key)").removeValue()
+                })
+                
+                
+                var ref2: DatabaseReference!
+                ref2 = Database.database(url: "https://projekios-6af0f-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
+                ref2.child("notes").observeSingleEvent(of: .value, with: { snapshot in
+                    // Loop through each user
+                    var count = 0
+                    self.namaa = []
+                    self.datee = []
+                    self.contentt = []
+                    self.tipe = []
+                    for child in snapshot.children {
+                        if let childSnapshot = child as? DataSnapshot,
+                           let userData = childSnapshot.value as? [String: Any] {
+                            // Print the data
+                            let nama = userData["nama"] ?? ""
+                            let date = userData["date"] ?? ""
+                            let cont = userData["content"] ?? ""
+                            self.namaa.append(nama as! String)
+                            self.datee.append(date as! String)
+                            self.contentt.append(cont as! String)
+                            self.tipe.append("notes")
+                        }
+                        count=count+1
+                    }
+                    print(self.namaa)
+                    self.tableview.reloadData()
+                }) { error in
+                    print("Error retrieving data: \(error.localizedDescription)")
+                }
+                
+                self.tableview.reloadData()
+            }) { (Error) in
+                print("Failed to fetch: ", Error)
+            }
+            
+            
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return namaa.count
     }
@@ -27,16 +74,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("------- didSelectRowAt -------")
-        
+        self.rowSelected = indexPath.row
         performSegue(withIdentifier: "seeDetails", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(rowSelected != -1){
+        print("prepare")
+        print(self.rowSelected)
+        if(self.rowSelected != -1){
+            print(tipe[self.rowSelected])
             let vc = segue.destination as? SeeDetailsFromSearch
-            vc?.typee = tipe[rowSelected]
-            vc?.titlee = namaa[rowSelected]
-            vc?.datee = datee[rowSelected]
-            vc?.contentt = contentt[rowSelected]
+            vc?.typee = tipe[self.rowSelected]
+            vc?.titlee = namaa[self.rowSelected]
+            vc?.datee = datee[self.rowSelected]
+            vc?.contentt = contentt[self.rowSelected]
             vc?.delegasi = self
         }
     }
@@ -75,6 +125,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.namaa = []
                 self.datee = []
                 self.contentt = []
+                self.tipe = []
                 for child in snapshot.children {
                     if let childSnapshot = child as? DataSnapshot,
                        let userData = childSnapshot.value as? [String: Any] {
@@ -85,6 +136,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         self.namaa.append(nama as! String)
                         self.datee.append(date as! String)
                         self.contentt.append(cont as! String)
+                        self.tipe.append("notes")
                     }
                     count=count+1
                 }
@@ -108,6 +160,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         ref = Database.database(url: "https://projekios-6af0f-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
         
+        // load notes
         ref.child("notes").observeSingleEvent(of: .value, with: { snapshot in
             // Loop through each user
             var count = 0
@@ -121,6 +174,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.namaa.append(nama as! String)
                     self.datee.append(date as! String)
                     self.contentt.append(cont as! String)
+                    self.tipe.append("notes")
                 }
                 count=count+1
             }
@@ -132,6 +186,34 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("Error retrieving data: \(error.localizedDescription)")
         }
         self.tableview.reloadData()
+        
+        
+        
+        
+        // load event
+//        ref.child("events").observeSingleEvent(of: .value, with: { snapshot in
+//            // Loop through each user
+//            var count = 0
+//            for child in snapshot.children {
+//                if let childSnapshot = child as? DataSnapshot,
+//                   let userData = childSnapshot.value as? [String: Any] {
+//                    // Print the data
+//                    let nama = userData["name"] ?? ""
+//                    let date = userData["date"] ?? ""
+//                    self.namaa.append(nama as! String)
+//                    self.datee.append(date as! String)
+//                    self.contentt.append("")
+//                    self.tipe.append("event")
+//                }
+//                count=count+1
+//            }
+//            print(self.namaa)
+//
+//            self.tableview.reloadData()
+//
+//        }) { error in
+//            print("Error retrieving data: \(error.localizedDescription)")
+//        }
         
     }
     
