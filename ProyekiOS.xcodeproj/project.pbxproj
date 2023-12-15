@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9381C1D2212AE0DF14336F49 /* Pods_ProyekiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651C7E5FD7E45AD8E8B929CB /* Pods_ProyekiOS.framework */; };
+		B42438D22B2C4CA300728E53 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42438D12B2C4CA300728E53 /* SearchViewController.swift */; };
+		B42438D42B2C6C2300728E53 /* searchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42438D32B2C6C2300728E53 /* searchCell.swift */; };
+		B42438D62B2C7C5800728E53 /* SeeDetailsFromSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42438D52B2C7C5800728E53 /* SeeDetailsFromSearch.swift */; };
 		E815CD352B26CF8600ED6773 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815CD342B26CF8600ED6773 /* ViewController.swift */; };
 		E815CD372B26CFA100ED6773 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815CD362B26CFA100ED6773 /* ViewController2.swift */; };
 		E815CD392B26CFBA00ED6773 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815CD382B26CFBA00ED6773 /* ViewController3.swift */; };
@@ -30,6 +33,9 @@
 /* Begin PBXFileReference section */
 		5835702400A436F7F8534EEB /* Pods-ProyekiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProyekiOS.debug.xcconfig"; path = "Target Support Files/Pods-ProyekiOS/Pods-ProyekiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		651C7E5FD7E45AD8E8B929CB /* Pods_ProyekiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProyekiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B42438D12B2C4CA300728E53 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B42438D32B2C6C2300728E53 /* searchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchCell.swift; sourceTree = "<group>"; };
+		B42438D52B2C7C5800728E53 /* SeeDetailsFromSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDetailsFromSearch.swift; sourceTree = "<group>"; };
 		C0A6097CE2D60D2B8F644310 /* Pods-ProyekiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProyekiOS.release.xcconfig"; path = "Target Support Files/Pods-ProyekiOS/Pods-ProyekiOS.release.xcconfig"; sourceTree = "<group>"; };
 		E815CD342B26CF8600ED6773 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E815CD362B26CFA100ED6773 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 		E886F97C2B1079A0001F7A32 /* ProyekiOS */ = {
 			isa = PBXGroup;
 			children = (
+				B42438D12B2C4CA300728E53 /* SearchViewController.swift */,
 				E886F97D2B1079A0001F7A32 /* AppDelegate.swift */,
 				E83541282B26AD32003657B4 /* MonthlyViewController.swift */,
 				E886F97F2B1079A0001F7A32 /* SceneDelegate.swift */,
@@ -112,6 +119,8 @@
 				E815CD362B26CFA100ED6773 /* ViewController2.swift */,
 				E815CD382B26CFBA00ED6773 /* ViewController3.swift */,
 				E815CD3A2B26CFD600ED6773 /* CollectionViewCell.swift */,
+				B42438D32B2C6C2300728E53 /* searchCell.swift */,
+				B42438D52B2C7C5800728E53 /* SeeDetailsFromSearch.swift */,
 			);
 			path = ProyekiOS;
 			sourceTree = "<group>";
@@ -242,14 +251,17 @@
 			files = (
 				E815CD352B26CF8600ED6773 /* ViewController.swift in Sources */,
 				E81F19FD2B1EA9A1003ACB6C /* EventCell.swift in Sources */,
+				B42438D62B2C7C5800728E53 /* SeeDetailsFromSearch.swift in Sources */,
 				E815CD392B26CFBA00ED6773 /* ViewController3.swift in Sources */,
 				E8A20C9A2B1EA82800E7F528 /* EventEditViewController.swift in Sources */,
 				E8A20C962B1EA77900E7F528 /* CalendarHelper.swift in Sources */,
 				E815CD372B26CFA100ED6773 /* ViewController2.swift in Sources */,
 				E886F97E2B1079A0001F7A32 /* AppDelegate.swift in Sources */,
 				E8A20C982B1EA7DA00E7F528 /* WeeklyViewController.swift in Sources */,
+				B42438D22B2C4CA300728E53 /* SearchViewController.swift in Sources */,
 				E815CD3B2B26CFD600ED6773 /* CollectionViewCell.swift in Sources */,
 				E8A20C9C2B1EA84900E7F528 /* Event.swift in Sources */,
+				B42438D42B2C6C2300728E53 /* searchCell.swift in Sources */,
 				E886F9802B1079A0001F7A32 /* SceneDelegate.swift in Sources */,
 				E83541292B26AD32003657B4 /* MonthlyViewController.swift in Sources */,
 				E8A20CA02B1EA88700E7F528 /* CalendarCell.swift in Sources */,
