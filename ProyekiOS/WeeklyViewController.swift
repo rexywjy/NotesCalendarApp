@@ -33,10 +33,19 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
                 for (_, value) in snapshotValue {
                     if let eventDict = value as? [String: Any],
                        let eventName = eventDict["name"] as? String,
-                       let timestamp = eventDict["date"] as? TimeInterval,
-                       let eventId = eventDict["id"] as? String {
+                       let dateString = eventDict["date"] as? String,
+                       let eventId = eventDict["id"] as? String,
+                       let eventTime = eventDict["time"] as? TimeInterval,
+                       let eventDescription = eventDict["description"] as? String
+                    {
 
-                        let event = Event(name: eventName, date: Date(timeIntervalSince1970: timestamp))
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "dd/MM/yyyy"
+                        let eventDate = dateFormatter.date(from: dateString) ?? Date()
+
+                        
+                        let event = Event(name: eventName, date: eventDate, time: Date(timeIntervalSince1970: eventTime), description: eventDescription)
+//                        let event = Event(name: <#T##String#>, date: <#T##Date#>, time: <#T##String#>, description: <#T##String#>)
                         event.id = eventId
 
                         if Calendar.current.isDate(event.date, inSameDayAs: selectedDate) {
@@ -178,8 +187,18 @@ class WeeklyViewController: UIViewController, UICollectionViewDelegate, UICollec
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! EventCell
            if indexPath.row < selectedDateEvents.count {
+               let dateFormatter = DateFormatter()
+               dateFormatter.dateFormat = "dd/MM/yyyy"
+                           
                let event = selectedDateEvents[indexPath.row]
-               cell.eventLabel.text = event.name + " " + CalendarHelper().timeString(date: event.date)
+               let dateString = dateFormatter.string(from: event.date)
+               cell.eventLabel.text = event.name
+               
+               cell.dateLabel.text = CalendarHelper().timeString(date: event.time) + " " + dateString
+               
+               cell.descriptionLabel.text = event.description
+               cell.descriptionLabel.isEditable = false
+//               + " " + CalendarHelper().timeString(date: event.time)
            } else {
                cell.eventLabel.text = "Invalid Index"
            }

@@ -3,6 +3,8 @@ import Firebase
 
 class EventEditViewController: UIViewController {
 
+    @IBOutlet weak var descriptionTV: UITextView!
+//    @IBOutlet weak var descriptionTF: UITextField!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     
@@ -19,6 +21,7 @@ class EventEditViewController: UIViewController {
     
     private func setupForEditing() {
         if let event = editingEvent {
+            descriptionTV.text = event.description
             nameTF.text = event.name
             datePicker.date = event.date
         }
@@ -26,11 +29,17 @@ class EventEditViewController: UIViewController {
     
     private func saveEvent() {
         guard let eventName = nameTF.text else { return }
+        guard let eventDescription = descriptionTV.text else { return }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         
         let eventDict: [String: Any] = [
             "name": eventName,
-            "date": datePicker.date.timeIntervalSince1970,
-            "id": editingEvent?.id ?? UUID().uuidString
+            "date": dateFormatter.string(from: datePicker.date),
+            "id": editingEvent?.id ?? UUID().uuidString,
+            "description": eventDescription,
+            "time": datePicker.date.timeIntervalSince1970,
         ]
         
         if let eventId = editingEvent?.id {
@@ -53,6 +62,7 @@ class EventEditViewController: UIViewController {
             }
         }
     }
+
 
     @IBAction func saveAction(_ sender: Any) {
         saveEvent()
