@@ -541,20 +541,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="gO3-8X-Q1c" customClass="searchCell" customModule="ProyekiOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gO3-8X-Q1c" id="aBh-JV-mMt">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9a-i0-agd">
-                                                    <rect key="frame" x="30" y="11" width="224" height="21.5"/>
+                                                    <rect key="frame" x="30" y="11" width="224" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lp7-Oe-bg6">
-                                                    <rect key="frame" x="262" y="11" width="122" height="21.5"/>
+                                                    <rect key="frame" x="262" y="11" width="122" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -666,7 +666,7 @@
                         <outlet property="judul" destination="7Ug-9Y-saX" id="AYH-Og-csg"/>
                         <outlet property="konten" destination="6cc-Cz-KQ4" id="bVt-wn-PAC"/>
                         <outlet property="tanggal" destination="86b-za-ZgZ" id="HeD-5x-kUW"/>
-                        <segue destination="NWu-4e-gsL" kind="show" id="BBP-yN-gv6"/>
+                        <segue destination="NWu-4e-gsL" kind="show" identifier="editSearch" id="BBP-yN-gv6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZJ-aB-AU3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
