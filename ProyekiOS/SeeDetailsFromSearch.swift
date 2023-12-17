@@ -11,24 +11,33 @@ import Foundation
 
 protocol KembaliDelegatee{
     func deleteNoteRex(title: String, tipenya: String)
-    func backHabisEdit(namalama:String, titlenya: String, contentnya: String, datenya: String)
+    func backHabisEdit(tipenya: String, namalama:String, titlenya: String, contentnya: String, datenya: String)
 //    func backMauEditEvent(titlenya: String, contentnya: String, datenya: String)
 }
-class SeeDetailsFromSearch: UIViewController, KembaliDariNotes {
+class SeeDetailsFromSearch: UIViewController, KembaliDariNotes, KembaliDariEvents {
+    
+    func habiseditevents(titleparam: String, contentparam: String, datenya: String) {
+        print(">> back to main events")
+        if(typee=="events"){
+            delegasi?.backHabisEdit(tipenya: "events", namalama: self.titlee ?? "", titlenya: titleparam, contentnya: contentparam, datenya: self.datee ?? "")
+            navigationController?.popViewController(animated: true) //back
+        }
+    }
+    
     var delegasi: KembaliDelegatee?
     
     var ref: DatabaseReference!
     
     var typee : String?
-    var datee : String?
+    var datee : String!
     var titlee : String?
     var contentt : String?
     
     func habiseditnotes(titleparam: String, contentparam: String){
         
-        print(">> back to main")
+        print(">> back to main notes")
         if(typee=="notes"){
-            delegasi?.backHabisEdit(namalama: self.titlee ?? "", titlenya: titleparam, contentnya: contentparam, datenya: self.datee ?? "")
+            delegasi?.backHabisEdit(tipenya: "notes",namalama: self.titlee ?? "", titlenya: titleparam, contentnya: contentparam, datenya: self.datee ?? "")
             navigationController?.popViewController(animated: true) //back
         }
 
@@ -39,9 +48,9 @@ class SeeDetailsFromSearch: UIViewController, KembaliDariNotes {
             print("editbtn notes")
             performSegue(withIdentifier: "editSearchNotes", sender: self)
         }
-//        else{
-//            performSegue(withIdentifier: "editSearchEvents", sender: self)
-//        }
+        else{
+            performSegue(withIdentifier: "editSearchEvents", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,12 +62,39 @@ class SeeDetailsFromSearch: UIViewController, KembaliDariNotes {
         vc?.dariRexy = 1
         print("prepare ke page vc 2")
         vc?.delegasiSearch = self
+        
+        print(datee)
+        let vc2 = segue.destination as? EventEditViewController
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yy/MM/dd;HH:mm:ss"
+
+        if let dateTime = dateFormatter.date(from: datee) {
+            // Extract date and time components
+            let date = Calendar.current.startOfDay(for: dateTime) // Date without time component
+            let time = Calendar.current.dateComponents([.hour, .minute, .second], from: dateTime)
+
+            vc2?.editingEvent = Event(name: titlee ?? "", date: date, time: time.date ?? Date(), description: contentt ?? "")
+            vc2?.dariRexy = 1
+            vc2?.delegasiSearch = self
+            print("prepare detail")
+        } else {
+            // Handle the case where the datee string couldn't be parsed
+            print("Error parsing datee")
+        }
+        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
 //
-//        var vc2 = segue.destination as? EventEditViewController
-////        vc2?.fotoItem = thumbnail[indexKe]
-////        vc2?.nama = itemName[indexKe]
-////        vc2?.jumlah = itemQty[indexKe]
-////        vc2?.harga = itemPrice[indexKe]
+//        let timeFormatter = DateFormatter()
+//        timeFormatter.dateFormat = "h:mm a"
+//
+////
+//        let vc2 = segue.destination as? EventEditViewController
+//        let dateFormatter = DateFormatter()
+//        print(datee)
+//        dateFormatter.dateFormat = "yy/MM/dd;hh:mm:ss"
+//        vc2?.editingEvent = Event(name: titlee ?? "", date: dateFormatter.date(from: datee)!, time: dateFormatter.date(from: datee)!, description: contentt ?? "")
+//        vc2?.dariRexy = 1
 //        vc2?.delegasiSearch = self
 //        print("prepare detail")
     }

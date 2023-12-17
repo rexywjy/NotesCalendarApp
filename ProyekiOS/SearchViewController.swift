@@ -10,27 +10,68 @@ import Firebase
 import Foundation
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, KembaliDelegatee {
-    func backHabisEdit(namalama:String, titlenya: String, contentnya: String, datenya: String) {
+    func backHabisEdit(tipenya: String, namalama:String, titlenya: String, contentnya: String, datenya: String) {
         print("mau edit nih boss")
-        print(titlenya)
-        print(contentnya)
-        print(datenya)
-        // UPDATE
-        let post = [ "nama": titlenya, "content": contentnya, "date": datenya]
-        ref.child("notes").queryOrdered(byChild: "nama").queryEqual(toValue: namalama).observeSingleEvent(of: .value, with: { (snapshot) in
+//        print(namalama)
+//        print(titlenya)
+//        print(contentnya)
+//        print(datenya)
+        if(tipenya == "notes"){
+            print("UPDATING NOTES")
+            // UPDATE
+            let post = [ "nama": titlenya, "content": contentnya, "date": datenya]
+            ref.child("notes").queryOrdered(byChild: "nama").queryEqual(toValue: namalama).observeSingleEvent(of: .value, with: { (snapshot) in
                 guard let dictionary = snapshot.value as? [String:Any] else {return}
                 dictionary.forEach({ (key , _) in
                     let childUpdates = [ key: post ]
                     self.ref.child("notes").updateChildValues(childUpdates)
                 })
-            
-            print("done edit. now updating tables")
-            self.viewDidLoad()
-            
-            
+                
+                print("done edit NOTES. now updating tables")
+                self.tableview.reloadData()
+                self.viewDidLoad()
+                
+                
             }) { (Error) in
                 print("Failed to fetch: ", Error)
             }
+        }else{
+            print(namalama)
+            print(titlenya)
+            print(contentnya)
+            print(datenya)
+            self.tableview.reloadData()
+            self.viewDidLoad()
+            
+//            let inputStringg = datenya ?? ""
+//            let separatedArray = inputStringg.components(separatedBy: ";")
+//            ref.child("events").queryOrdered(byChild: "name").queryEqual(toValue: namalama).observeSingleEvent(of: .value, with: { (snapshot) in
+//                            guard let dictionary = snapshot.value as? [String:Any] else {return}
+//                            dictionary.forEach({ (key , _) in
+//                                self.ref.child("events/\(key)").removeValue()
+//                            })
+//                        }) { (Error) in
+//                            print("Failed to fetch: ", Error)
+//                        }
+//
+//            // UPDATE EVENTS
+//            let post = [ "name": titlenya, "desciption": contentnya, "date": separatedArray[0], "time": separatedArray[1]]
+//            ref.child("events").queryOrdered(byChild: "name").queryEqual(toValue: namalama).observeSingleEvent(of: .value, with: { (snapshot) in
+//                guard let dictionary = snapshot.value as? [String:Any] else {return}
+//                dictionary.forEach({ (key , _) in
+//                    let childUpdates = [ key: post ]
+//                    self.ref.child("event").updateChildValues(childUpdates)
+//                })
+//
+//                print("done edit EVENTS. now updating tables")
+//                self.tableview.reloadData()
+//                self.viewDidLoad()
+//
+//
+//            }) { (Error) in
+//                print("Failed to fetch: ", Error)
+//            }
+        }
         
         
         
