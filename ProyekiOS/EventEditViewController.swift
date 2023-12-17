@@ -74,17 +74,17 @@ class EventEditViewController: UIViewController {
                 }
             }
             else{
-                ref.child("events").child(eventId).updateChildValues(eventDict) { (error, _) in
-                    if let error = error {
-                        print("Error updating event in Firebase: \(error.localizedDescription)")
-                    } else {
-                        print("Event added in Firebase successfully!")
-                        self.ref.child("events").queryOrdered(byChild: "name").queryEqual(toValue: self.editingEvent?.name).observeSingleEvent(of: .value, with: { (snapshot) in
-                                        guard let dictionary = snapshot.value as? [String:Any] else {return}
-                                        dictionary.forEach({ (key , _) in
-                                            self.ref.child("events/\(key)").removeValue()
-                                        })
-                            print("Event removed in Firebase successfully!")
+                self.ref.child("events").queryOrdered(byChild: "name").queryEqual(toValue: self.editingEvent?.name).observeSingleEvent(of: .value, with: { (snapshot) in
+                                guard let dictionary = snapshot.value as? [String:Any] else {return}
+                                dictionary.forEach({ (key , _) in
+                                    self.ref.child("events/\(key)").removeValue()
+                                })
+                    print("Event removed in Firebase successfully!")
+                    self.ref.child("events").child(eventId).updateChildValues(eventDict) { (error, _) in
+                        if let error = error {
+                            print("Error updating event in Firebase: \(error.localizedDescription)")
+                        } else {
+                            print("Event added in Firebase successfully!")
                             // Create a date formatter for the time
                             let timeFormatter = DateFormatter()
                             timeFormatter.dateFormat = "HH:mm:ss" // Customize the time format as needed
@@ -94,12 +94,13 @@ class EventEditViewController: UIViewController {
                                 contentparam: self.editingEvent?.description ?? "",
                                 datenya: timeString)
                             self.navigationController?.popViewController(animated: true)
-                                    }) { (Error) in
-                                        print("Failed to fetch: ", Error)
-                                    }
-                        
+                            
+                        }
                     }
-                }
+                            }) { (Error) in
+                                print("Failed to fetch: ", Error)
+                            }
+                
             }
         } else {
             if(self.dariRexy==0){
