@@ -10,20 +10,34 @@ import UIKit
 protocol KembaliDelegate2 {
     func dari2(nama: String, content: String, new: Int, keberapa: Int)
 }
+protocol KembaliDariNotes{
+    func habiseditnotes(titleparam: String, contentparam: String)
+}
+
 
 class ViewController2: UIViewController {
     
     var delegasi2: KembaliDelegate2?
+    var delegasiSearch: KembaliDariNotes?
     
     var isNew: Int = 1
     var judulIsi: String = ""
     var contentIsi: String = ""
     var keberapaa: Int = -1
+    var dariRexy = 0
 
     @IBOutlet weak var save: UIButton!
     @IBAction func save(_ sender: UIButton) {
-        delegasi2?.dari2(nama: String(judul.text!), content: String(content.text!), new: isNew, keberapa: keberapaa)
-        navigationController?.popViewController(animated: true) //back
+        if(dariRexy==0){
+            print("dari view controller")
+            delegasi2?.dari2(nama: String(judul.text!), content: String(content.text!), new: isNew, keberapa: keberapaa)
+            navigationController?.popViewController(animated: true) //back
+        }else{
+            print("dari rexy dong")
+            print(delegasiSearch as Any)
+            delegasiSearch?.habiseditnotes(titleparam: String(judul.text!), contentparam: String(content.text!))
+            navigationController?.popViewController(animated: true) //back
+        }
     }
     @IBOutlet weak var judul: UITextField!
     @IBOutlet weak var content: UITextView!

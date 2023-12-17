@@ -663,10 +663,11 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="judul" destination="7Ug-9Y-saX" id="AYH-Og-csg"/>
-                        <outlet property="konten" destination="6cc-Cz-KQ4" id="bVt-wn-PAC"/>
-                        <outlet property="tanggal" destination="86b-za-ZgZ" id="HeD-5x-kUW"/>
-                        <segue destination="NWu-4e-gsL" kind="show" identifier="editSearch" id="BBP-yN-gv6"/>
+                        <outlet property="judul" destination="7Ug-9Y-saX" id="ode-7D-YjJ"/>
+                        <outlet property="konten" destination="6cc-Cz-KQ4" id="3hY-k9-Y0a"/>
+                        <outlet property="tanggal" destination="86b-za-ZgZ" id="oYq-YO-6XG"/>
+                        <segue destination="NWu-4e-gsL" kind="show" identifier="editSearchNotes" id="BBP-yN-gv6"/>
+                        <segue destination="1w4-iF-aWX" kind="show" identifier="editSearchEvents" id="9EO-oQ-PNs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZJ-aB-AU3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -904,6 +905,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="BBP-yN-gv6"/>
+        <segue reference="9EO-oQ-PNs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.left.circle.fill" catalog="system" width="128" height="123"/>

@@ -10,6 +10,33 @@ import Firebase
 import Foundation
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, KembaliDelegatee {
+    func backHabisEdit(namalama:String, titlenya: String, contentnya: String, datenya: String) {
+        print("mau edit nih boss")
+        print(titlenya)
+        print(contentnya)
+        print(datenya)
+        // UPDATE
+        let post = [ "nama": titlenya, "content": contentnya, "date": datenya]
+        ref.child("notes").queryOrdered(byChild: "nama").queryEqual(toValue: namalama).observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let dictionary = snapshot.value as? [String:Any] else {return}
+                dictionary.forEach({ (key , _) in
+                    let childUpdates = [ key: post ]
+                    self.ref.child("notes").updateChildValues(childUpdates)
+                })
+            
+            print("done edit. now updating tables")
+            self.viewDidLoad()
+            
+            
+            }) { (Error) in
+                print("Failed to fetch: ", Error)
+            }
+        
+        
+        
+        self.tableview.reloadData()
+    }
+    
     func deleteNoteRex(title: String, tipenya: String) {
         self.rowSelected = -1
         if(tipenya == "notes"){
@@ -218,15 +245,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("prepare")
         print(self.rowSelected)
-        if(self.rowSelected != -1){
-            print(namaa[self.rowSelected])
-            let vc = segue.destination as? SeeDetailsFromSearch
-            vc?.typee = tipe[self.rowSelected]
-            vc?.titlee = namaa[self.rowSelected]
-            vc?.datee = datee[self.rowSelected]
-            vc?.contentt = contentt[self.rowSelected]
-            vc?.delegasi = self
-        }
+        
+        
+        print(namaa[self.rowSelected])
+        let vc = segue.destination as? SeeDetailsFromSearch
+        vc?.typee = tipe[self.rowSelected]
+        vc?.titlee = namaa[self.rowSelected]
+        vc?.datee = datee[self.rowSelected]
+        vc?.contentt = contentt[self.rowSelected]
+        vc?.delegasi = self
+    
         print("prepare")
     }
     
