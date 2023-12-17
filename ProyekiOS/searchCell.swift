@@ -9,6 +9,7 @@ import UIKit
 
 class searchCell: UITableViewCell {
 
+    @IBOutlet weak var labelType: UILabel!
     @IBOutlet weak var labelDesc: UILabel!
     @IBOutlet weak var labelCell: UILabel!
     @IBAction func actionCell(_ sender: UIButton) {

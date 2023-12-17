@@ -262,6 +262,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "cell")! as! searchCell
         cell.labelCell.text = self.namaa[indexPath.row]
+        cell.labelType.text = self.tipe[indexPath.row]
         
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateFormat = "dd/MM/yyyy"
