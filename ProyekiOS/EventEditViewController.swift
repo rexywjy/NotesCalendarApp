@@ -115,9 +115,8 @@ class EventEditViewController: UIViewController {
             }
             else{
                 print("Event updated in Firebase successfully!")
-                // Create a date formatter for the time
                 let timeFormatter = DateFormatter()
-                timeFormatter.dateFormat = "HH:mm:ss" // Customize the time format as needed
+                timeFormatter.dateFormat = "HH:mm:ss"
                 let timeString = timeFormatter.string(from: (self.editingEvent?.time)!)
                 self.delegasiSearch?.habiseditevents(
                     titleparam: self.editingEvent?.name ?? "",
