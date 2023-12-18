@@ -585,10 +585,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
     }
+    
+    @objc func DismissKeyboard() { // untuk hide keyboard kalo di tap luar keyboard (tdk ada di record demo)
+        view.endEditing(true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableview.delegate = self
         tableview.dataSource = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         
         ref = Database.database(url: "https://projekios-6af0f-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
         

@@ -16,10 +16,19 @@ class ViewController: UIViewController, KembaliDelegate2, UICollectionViewDelega
     var keberapa: Int = -1
        
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var addBtn: UIButton!
-    @IBAction func addBtn(_ sender: UIButton) {
+    //@IBOutlet weak var addBtn: UIButton!
+    @IBAction func addBtn(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "draw", sender: self)
     }
+    @IBAction func reverse(_ sender: UIBarButtonItem) {
+        judulNotes.reverse()
+        contentNotes.reverse()
+        tanggalNotes.reverse()
+        collectionView.reloadData()
+    }
+    //@IBAction func addBtn(_ sender: UIButton) {
+    //    performSegue(withIdentifier: "draw", sender: self)
+    //}
     var colors: [UIColor] = [.systemIndigo, .systemGreen, .systemBlue, .systemTeal,
                              .systemOrange, .systemPurple,
                              .systemYellow, .systemPink]
@@ -82,11 +91,11 @@ class ViewController: UIViewController, KembaliDelegate2, UICollectionViewDelega
        collectionView?.delegate = self
        collectionView?.dataSource = self
        
-       addBtn.setImage(
-           UIImage(systemName: "paintbrush.pointed.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large))
-                       , for: .normal
-       )
-       addBtn.tintColor = UIColor.label
+       //addBtn.setImage(
+       //    UIImage(systemName: "paintbrush.pointed.fill", withConfiguration: //UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: //.large))
+       //                , for: .normal
+       //)
+       //addBtn.tintColor = UIColor.label
        
        ref.child("notes").observe(.value, with: { (snapshot) in
            for child in snapshot.children {
