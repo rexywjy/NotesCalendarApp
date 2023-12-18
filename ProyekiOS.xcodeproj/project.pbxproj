@@ -30,6 +30,7 @@
 		E8A20CA02B1EA88700E7F528 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A20C9F2B1EA88700E7F528 /* CalendarCell.swift */; };
 		E8D679472B3026F700782CB6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D679462B3026F700782CB6 /* LoginViewController.swift */; };
 		E8D679492B30271500782CB6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D679482B30271500782CB6 /* SignUpViewController.swift */; };
+		E8D6794D2B30332E00782CB6 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6794C2B30332E00782CB6 /* StatisticsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		E8A20C9F2B1EA88700E7F528 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		E8D679462B3026F700782CB6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E8D679482B30271500782CB6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		E8D6794C2B30332E00782CB6 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				E83541282B26AD32003657B4 /* MonthlyViewController.swift */,
 				E886F97F2B1079A0001F7A32 /* SceneDelegate.swift */,
 				E8A20C972B1EA7D900E7F528 /* WeeklyViewController.swift */,
+				E8D6794C2B30332E00782CB6 /* StatisticsViewController.swift */,
 				E81F19FC2B1EA9A1003ACB6C /* EventCell.swift */,
 				E8A20C992B1EA82800E7F528 /* EventEditViewController.swift */,
 				E8A20C9B2B1EA84900E7F528 /* Event.swift */,
@@ -260,6 +263,7 @@
 				B42438D62B2C7C5800728E53 /* SeeDetailsFromSearch.swift in Sources */,
 				E815CD392B26CFBA00ED6773 /* ViewController3.swift in Sources */,
 				E8A20C9A2B1EA82800E7F528 /* EventEditViewController.swift in Sources */,
+				E8D6794D2B30332E00782CB6 /* StatisticsViewController.swift in Sources */,
 				E8A20C962B1EA77900E7F528 /* CalendarHelper.swift in Sources */,
 				E8D679492B30271500782CB6 /* SignUpViewController.swift in Sources */,
 				E815CD372B26CFA100ED6773 /* ViewController2.swift in Sources */,
