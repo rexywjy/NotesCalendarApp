@@ -3,12 +3,12 @@
 Notes-Calendar combined app for iOS application. 
 
 Created by:
-Jonathan Demario     -  C14210001
+1. Jonathan Demario     -  C14210001
 
-Patrick Giovanno     -  C14210008
+2. Patrick Giovanno     -  C14210008
 
-Rexy Wijaya          -  C14210011
+3. Rexy Wijaya          -  C14210011
 
-Vincentius Actonio   -  C14210213
+4. Vincentius Actonio   -  C14210213
 
-Kelvin Sidharta Sie  -  C14210307
+5. Kelvin Sidharta Sie  -  C14210307
